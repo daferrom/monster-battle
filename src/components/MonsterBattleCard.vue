@@ -1,7 +1,36 @@
 <template>
   <div>
     <v-card class="battle-card-player centralized">
+      <img
+        class="card-image"
+        src="https://fsl-assessment-public-files.s3.amazonaws.com/assessment-cc-01/dead-unicorn.png"
+        alt=""
+      />
       <p class="title">{{ title }}</p>
+      <div class="skill-container">
+        <p class="skill-text">HP</p>
+        <div class="progress-container">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+      </div>
+      <div class="skill-container">
+        <p class="skill-text">HP</p>
+        <div class="progress-container">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+      </div>
+      <div class="skill-container">
+        <p class="skill-text">HP</p>
+        <div class="progress-container">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+      </div>
+      <div class="skill-container">
+        <p class="skill-text">HP</p>
+        <div class="progress-container">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+      </div>
     </v-card>
   </div>
 </template>
@@ -30,17 +59,53 @@ export default Vue.extend({
   border-radius: 7px;
   box-shadow: $box-shadow;
 }
+.card-image {
+  height: 178px;
+  width: 283px;
+  border-radius: 7px;
+}
 
 .centralized {
-  display: flex !important;
-  align-items: center;
+  display: flex;
+  // align-items: center;
   justify-content: center;
 }
 
 .title {
+  // display: flex;
+  // // align-items: start;
   font-style: normal;
   font-weight: 400;
-  font-size: 36px;
+  font-size: 22px;
   line-height: 42px;
+  border-bottom: 1px solid rgba(255, 0, 0, 0.1);
+}
+
+.skill-container {
+  margin-top: 11px;
+}
+.skill-text {
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+/* Contenedor de la barra de progreso */
+.progress-container {
+  height: 8px;
+  width: 100%;
+  background-color: #d9d9d9;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* Barra de progreso */
+.progress-bar {
+  width: 30%;
+  height: 30px;
+  background-color: #00ff00;
+  line-height: 30px; /* Centra el texto verticalmente */
+  color: white;
+  border-radius: 4px;
+  z-index: 1;
 }
 </style>
