@@ -10,25 +10,30 @@
       <div class="skill-container">
         <p class="skill-text">HP</p>
         <div class="progress-container">
-          <div class="progress-bar" id="progress-bar"></div>
+          <div
+            class="progress-bar"
+            :style="{ width: healthPoints + '%' }"
+          ></div>
         </div>
-      </div>
-      <div class="skill-container">
-        <p class="skill-text">HP</p>
+        <p class="skill-text">Attack</p>
         <div class="progress-container">
-          <div class="progress-bar" id="progress-bar"></div>
+          <div
+            class="progress-bar"
+            :style="{ width: attackPoints + '%' }"
+          ></div>
         </div>
-      </div>
-      <div class="skill-container">
-        <p class="skill-text">HP</p>
+        <p class="skill-text">Defense</p>
         <div class="progress-container">
-          <div class="progress-bar" id="progress-bar"></div>
+          <div
+            class="progress-bar"
+            :style="{ width: defensePoints + '%' }"
+          ></div>
         </div>
-      </div>
-      <div class="skill-container">
-        <p class="skill-text">HP</p>
+        <p class="skill-text">Speed</p>
         <div class="progress-container">
-          <div class="progress-bar" id="progress-bar"></div>
+          <div class="progress-bar" :style="{ width: speedPoints + '%' }">
+            >
+          </div>
         </div>
       </div>
     </v-card>
@@ -44,6 +49,24 @@ export default Vue.extend({
     title: {
       type: String,
       required: false,
+    },
+    monster: {
+      type: Object,
+      required: true,
+    },
+  },
+  computed: {
+    healthPoints(): number {
+      return this.monster.hp;
+    },
+    attackPoints(): number {
+      return this.monster.attack;
+    },
+    defensePoints(): number {
+      return this.monster.defense;
+    },
+    speedPoints(): number {
+      return this.monster.speed;
     },
   },
 });
