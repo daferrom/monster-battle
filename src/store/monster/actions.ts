@@ -16,4 +16,8 @@ export const actions: ActionTree<MonsterState, RootState> = {
   selectedMonster({ commit }, monster: Monster): void {
     commit(constants.SELECT_MONSTERS, monster);
   },
+  selectComputerMonster({ commit }, monster: Monster): void {
+    console.log("monster", monster);
+    commit(constants.SELECT_PC_MONSTER, monster);
+  },
 };

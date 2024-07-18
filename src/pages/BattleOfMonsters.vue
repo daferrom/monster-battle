@@ -14,7 +14,10 @@
       >
         Start Battle
       </v-btn>
-      <MonsterBattleCard title="Computer" :monster="{}" />
+      <MonsterBattleCard
+        :title="selectedMonsterByPC ? selectedMonsterByPC.name : 'Computer'"
+        :monster="selectedMonsterByPC || {}"
+      />
     </div>
   </div>
 </template>
@@ -35,7 +38,11 @@ export default Vue.extend({
     ),
   },
   computed: {
-    ...mapState("monster", ["selectedMonsterId", "selectedMonster"]),
+    ...mapState("monster", [
+      "selectedMonsterId",
+      "selectedMonster",
+      "selectedMonsterByPC",
+    ]),
     ...mapGetters("monster", ["getMonsters"]),
     monsters() {
       return this.getMonsters;

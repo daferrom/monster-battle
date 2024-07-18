@@ -13,4 +13,5 @@ export interface MonsterState {
   monsters: Monster[];
   selectedMonsterId: string | undefined;
   selectedMonster: Monster | undefined;
+  selectedMonsterByPC: Monster | undefined;
 }

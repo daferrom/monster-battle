@@ -11,4 +11,14 @@ export const mutations: MutationTree<MonsterState> = {
   setSelectedMonster(state, monster: Monster) {
     state.selectedMonster = monster;
   },
+  setSelectedMonsterByPC(state, monster: Monster) {
+    debugger;
+    const listNotSelectedMonster = state.monsters.filter(
+      (m) => m.id !== monster.id
+    );
+    const randomIndex = Math.floor(
+      Math.random() * listNotSelectedMonster.length
+    );
+    state.selectedMonsterByPC = listNotSelectedMonster[randomIndex];
+  },
 };

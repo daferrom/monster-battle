@@ -43,13 +43,18 @@ export default Vue.extend({
     };
   },
   methods: {
-    ...mapActions("monster", ["selectedMonsterById", "selectedMonster"]),
+    ...mapActions("monster", [
+      "selectedMonsterById",
+      "selectedMonster",
+      "selectComputerMonster",
+    ]),
     handleMonsterClick(monster: Monster) {
       const correctMonster =
         this.selectedMonsterId !== monster.id ? monster : null;
       this.selectedMonsterId = correctMonster?.id ?? null;
       this.selectedMonsterById(correctMonster?.id ?? null);
       this.selectedMonster(correctMonster ?? null);
+      this.selectComputerMonster(correctMonster ?? null);
     },
   },
 });

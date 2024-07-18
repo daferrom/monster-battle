@@ -15,4 +15,15 @@ export const monsterState: MonsterState = {
     imageUrl:
       "https://fsl-assessment-public-files.s3.amazonaws.com/assessment-cc-01/dead-unicorn.png",
   },
+  selectedMonsterByPC: {
+    id: "monster-3",
+    name: "Red Dragon",
+    attack: 90,
+    defense: 80,
+    hp: 90,
+    speed: 70,
+    type: "Type",
+    imageUrl:
+      "https://fsl-assessment-public-files.s3.amazonaws.com/assessment-cc-01/red-dragon.png",
+  },
 };
