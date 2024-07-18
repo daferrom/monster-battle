@@ -5,7 +5,7 @@
     <div class="battle-section">
       <MonsterBattleCard
         :title="selectedMonster ? selectedMonster.name : 'Player'"
-        :monster="selectedMonster"
+        :monster="selectedMonster || {}"
       />
       <v-btn
         class="start-battle-button"
@@ -14,7 +14,7 @@
       >
         Start Battle
       </v-btn>
-      <MonsterBattleCard title="Computer" :monster="[]" />
+      <MonsterBattleCard title="Computer" :monster="{}" />
     </div>
   </div>
 </template>

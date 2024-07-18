@@ -1,40 +1,41 @@
 <template>
   <div>
     <v-card class="battle-card-player centralized">
-      <img
-        class="card-image"
-        src="https://fsl-assessment-public-files.s3.amazonaws.com/assessment-cc-01/dead-unicorn.png"
-        alt=""
-      />
-      <p class="title">{{ title }}</p>
-      <div class="skill-container">
-        <p class="skill-text">HP</p>
-        <div class="progress-container">
-          <div
-            class="progress-bar"
-            :style="{ width: healthPoints + '%' }"
-          ></div>
-        </div>
-        <p class="skill-text">Attack</p>
-        <div class="progress-container">
-          <div
-            class="progress-bar"
-            :style="{ width: attackPoints + '%' }"
-          ></div>
-        </div>
-        <p class="skill-text">Defense</p>
-        <div class="progress-container">
-          <div
-            class="progress-bar"
-            :style="{ width: defensePoints + '%' }"
-          ></div>
-        </div>
-        <p class="skill-text">Speed</p>
-        <div class="progress-container">
-          <div class="progress-bar" :style="{ width: speedPoints + '%' }">
-            >
+      <div v-if="!emptyStateText">
+        <img class="card-image" :src="monster.imageUrl" alt="" />
+        <p class="title">{{ title }}</p>
+        <div class="skill-container">
+          <p class="skill-text">HP</p>
+          <div class="progress-container">
+            <div
+              class="progress-bar"
+              :style="{ width: healthPoints + '%' }"
+            ></div>
+          </div>
+          <p class="skill-text">Attack</p>
+          <div class="progress-container">
+            <div
+              class="progress-bar"
+              :style="{ width: attackPoints + '%' }"
+            ></div>
+          </div>
+          <p class="skill-text">Defense</p>
+          <div class="progress-container">
+            <div
+              class="progress-bar"
+              :style="{ width: defensePoints + '%' }"
+            ></div>
+          </div>
+          <p class="skill-text">Speed</p>
+          <div class="progress-container">
+            <div class="progress-bar" :style="{ width: speedPoints + '%' }">
+              >
+            </div>
           </div>
         </div>
+      </div>
+      <div v-else class="empty-state-container">
+        <p>{{ title }}</p>
       </div>
     </v-card>
   </div>
@@ -52,21 +53,26 @@ export default Vue.extend({
     },
     monster: {
       type: Object,
-      required: true,
     },
   },
   computed: {
+    emptyStateText(): boolean {
+      return this.title === "Player" || this.title === "Computer";
+    },
     healthPoints(): number {
-      return this.monster.hp;
+      return this?.monster?.hp || 0;
     },
     attackPoints(): number {
-      return this.monster.attack;
+      return this?.monster?.attack || 0;
     },
     defensePoints(): number {
-      return this.monster.defense;
+      return this?.monster?.defense || 0;
     },
     speedPoints(): number {
-      return this.monster.speed;
+      return this?.monster?.speed || 0;
+    },
+    imageUrl(): string {
+      return this?.monster?.imageUrl || "";
     },
   },
 });
@@ -78,9 +84,17 @@ export default Vue.extend({
 .battle-card-player {
   padding: 13px 11px;
   height: 415px;
+  min-width: 305px;
   flex-direction: column;
   border-radius: 7px;
   box-shadow: $box-shadow;
+}
+
+.empty-state-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
 }
 .card-image {
   height: 178px;
@@ -104,10 +118,8 @@ export default Vue.extend({
   border-bottom: 1px solid rgba(255, 0, 0, 0.1);
 }
 
-.skill-container {
-  margin-top: 11px;
-}
 .skill-text {
+  margin-top: 11px;
   font-size: 12px;
   margin-bottom: 5px;
 }
