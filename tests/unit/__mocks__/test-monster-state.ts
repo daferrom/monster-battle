@@ -12,8 +12,7 @@ export const monsterState: MonsterState = {
     hp: 10,
     speed: 80,
     type: "Type",
-    imageUrl:
-      "https://fsl-assessment-public-files.s3.amazonaws.com/assessment-cc-01/dead-unicorn.png",
+    imageUrl: "https://fsl-assessment-public-files.s3.amazonaws.com/assessment-cc-01/dead-unicorn.png",
   },
   selectedMonsterByPC: {
     id: "monster-3",
@@ -23,7 +22,7 @@ export const monsterState: MonsterState = {
     hp: 90,
     speed: 70,
     type: "Type",
-    imageUrl:
-      "https://fsl-assessment-public-files.s3.amazonaws.com/assessment-cc-01/red-dragon.png",
+    imageUrl: "https://fsl-assessment-public-files.s3.amazonaws.com/assessment-cc-01/red-dragon.png",
   },
+  winner: undefined,
 };

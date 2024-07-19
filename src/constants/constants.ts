@@ -6,4 +6,5 @@ export const constants = {
   GET_BATTLE_WINNER: "setBattleWinner",
   RESET_GAME: "setResetGame",
   SELECT_PC_MONSTER: "setSelectedMonsterByPC",
+  SET_WINNER: "setWinner",
 };

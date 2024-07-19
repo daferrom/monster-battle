@@ -20,4 +20,10 @@ export const actions: ActionTree<MonsterState, RootState> = {
     console.log("monster", monster);
     commit(constants.SELECT_PC_MONSTER, monster);
   },
+  calculateWinner({ commit }, params: any): void {
+    console.log("PARAMS", params);
+    MonsterService.getWinner(params[0], params[1]).then((resp: any) => {
+      commit(constants.SET_WINNER, resp);
+    });
+  },
 };

@@ -18,6 +18,7 @@ server.get("/monsters", (req, res) => {
 });
 
 server.post("/battle", (req, res) => {
+  console.log("!!!!!!!!!!!!!!! BATLLE REQUEST",req)
   const { monster1Id, monster2Id } = req.body;
 
   if (!monster1Id || !monster2Id) {

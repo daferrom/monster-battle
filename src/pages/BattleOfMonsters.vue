@@ -2,6 +2,7 @@
   <div class="main-section">
     <p class="main-title">Battle of Monsters</p>
     <MonstersList :monsters="monsters" />
+    <WinnerDisplay v-if="winner" :message="winner ? winner.name : ''" />
     <div class="battle-section">
       <MonsterBattleCard
         :title="selectedMonster ? selectedMonster.name : 'Player'"
@@ -11,6 +12,7 @@
         class="start-battle-button"
         :disabled="!selectedMonsterId"
         :class="[{ inactive: !selectedMonsterId }]"
+        @click="calculateWinner([selectedMonsterId, selectedMonsterByPC.id])"
       >
         Start Battle
       </v-btn>
@@ -36,12 +38,16 @@ export default Vue.extend({
     MonsterBattleCard: defineAsyncComponent(
       () => import("@/components/MonsterBattleCard.vue")
     ),
+    WinnerDisplay: defineAsyncComponent(
+      () => import("@/components/WinnerDisplay.vue")
+    ),
   },
   computed: {
     ...mapState("monster", [
       "selectedMonsterId",
       "selectedMonster",
       "selectedMonsterByPC",
+      "winner",
     ]),
     ...mapGetters("monster", ["getMonsters"]),
     monsters() {
@@ -49,7 +55,7 @@ export default Vue.extend({
     },
   },
   methods: {
-    ...mapActions("monster", ["loadMonsters"]),
+    ...mapActions("monster", ["loadMonsters", "calculateWinner"]),
   },
   created() {
     this.loadMonsters();

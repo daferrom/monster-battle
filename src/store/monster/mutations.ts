@@ -21,4 +21,12 @@ export const mutations: MutationTree<MonsterState> = {
     );
     state.selectedMonsterByPC = listNotSelectedMonster[randomIndex];
   },
+  setWinner(state, resp: any) {
+    const isATie = resp.tie;
+    if (!isATie) {
+      state.winner = resp.winner;
+    } else {
+      state.winner = undefined;
+    }
+  },
 };

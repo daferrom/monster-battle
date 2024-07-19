@@ -9,9 +9,14 @@ export interface Monster {
   imageUrl: string;
 }
 
+export interface Winner {
+  name: string;
+}
+
 export interface MonsterState {
   monsters: Monster[];
   selectedMonsterId: string | undefined;
   selectedMonster: Monster | undefined;
   selectedMonsterByPC: Monster | undefined;
+  winner: Winner | undefined;
 }

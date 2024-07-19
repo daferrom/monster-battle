@@ -5,4 +5,5 @@ export const state: MonsterState = {
   selectedMonsterId: undefined,
   selectedMonster: undefined,
   selectedMonsterByPC: undefined,
+  winner: undefined,
 };
